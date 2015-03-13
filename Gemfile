@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby '2.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
@@ -34,6 +34,13 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'mysql2', '~> 0.3.18'
 gem 'bootstrap-sass', '~> 3.3.3'
+gem 'haml', '~> 4.0.6'
+gem 'devise', :git => 'https://github.com/plataformatec/devise.git', :branch => 'lm-rails-4-2'
+gem 'erb2haml', '~> 0.1.5'
+
+group :test do
+  gem 'rspec-rails', '~> 3.2.1'
+end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
