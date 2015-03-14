@@ -13,7 +13,6 @@
         .navbar-header
           = link_to 'Homepage', root_path, class: 'navbar-brand'
           .ul.nav.navbar-nav
-            %li= link_to 'Enter admin zone', users_path
           - if user_signed_in?
             %p.navbar-text.navbar-right
               = "Signed in as #{current_user.email} -"
