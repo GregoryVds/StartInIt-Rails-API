@@ -40,8 +40,9 @@ gem 'haml', '~> 4.0.6'
 gem 'devise', '~> 3.4.1'
 gem 'erb2haml', '~> 0.1.5'
 gem 'rack', '1.5.2' # Somehow Passenger at OpenShift depends on Rack 1.5.2.
-
 gem 'activeadmin', github: 'activeadmin'
+gem 'devise_token_auth', '~> 0.1.30'
+gem 'omniauth', '~> 1.2.2'
 
 group :test do
   gem 'rspec-rails', '~> 3.2.1'
