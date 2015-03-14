@@ -37,9 +37,9 @@ end
 gem 'mysql2', '~> 0.3.18'
 gem 'bootstrap-sass', '~> 3.3.3'
 gem 'haml', '~> 4.0.6'
-gem 'devise', :git => 'https://github.com/plataformatec/devise.git', :branch => 'lm-rails-4-2'
+gem 'devise', '~> 3.4.1'
 gem 'erb2haml', '~> 0.1.5'
-gem 'rack', '1.5.2'
+gem 'rack', '1.5.2' # Somehow Passenger at OpenShift depends on Rack 1.5.2.
 
 group :test do
   gem 'rspec-rails', '~> 3.2.1'
