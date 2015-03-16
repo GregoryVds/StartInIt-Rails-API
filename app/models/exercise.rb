@@ -5,6 +5,4 @@ class Exercise < ActiveRecord::Base
 
   validates_presence_of :difficulty, :duration, :title, :track, :exercise_type
   validates :difficulty, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 5 }
-
-  scope :recent, lambda { |count| Exercise.order('created_at DESC').limit(count) } 
 end

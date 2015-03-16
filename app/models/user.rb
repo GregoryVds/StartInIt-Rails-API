@@ -6,8 +6,6 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  scope :recent, lambda { |count| User.order('created_at DESC').limit(count) } 
-
   before_validation :set_provider
 
   protected 
