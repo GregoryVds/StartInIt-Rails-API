@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150314155238) do
+ActiveRecord::Schema.define(version: 20150316110743) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -45,6 +45,25 @@ ActiveRecord::Schema.define(version: 20150314155238) do
 
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "exercises", force: true do |t|
+    t.integer  "difficulty",    default: 1
+    t.integer  "duration"
+    t.string   "title"
+    t.integer  "track_id"
+    t.integer  "exercise_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tracks", force: true do |t|
+    t.text     "description"
+    t.integer  "difficulty",     default: 1
+    t.string   "name"
+    t.text     "pre_requisites"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
