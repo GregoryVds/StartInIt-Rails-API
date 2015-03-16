@@ -1,19 +1,16 @@
 ActiveAdmin.register Track do
-
-
-  # See permitted parameters documentation:
-  # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-  #
   menu priority: 2
   permit_params :description, :difficulty, :name, :pre_requisites
-  #
-  # or
-  #
-  # permit_params do
-  #   permitted = [:permitted, :attributes]
-  #   permitted << :other if resource.something?
-  #   permitted
-  # end
 
-
+  index do
+    selectable_column
+    id_column
+    column :name
+    column :difficulty
+    column :description
+    column :pre_requisites
+    column :created_at
+    column :updated_at
+    actions
+  end
 end
