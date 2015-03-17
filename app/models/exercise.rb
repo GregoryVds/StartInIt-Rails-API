@@ -7,6 +7,10 @@ class Exercise < ActiveRecord::Base
 
   after_destroy :destroy_exercisable # Not very pretty but it avoids circular "dependent: :destroy" issues.
 
+  def type
+    exercisable_type == Mcq.name ? exercisable.class.name.underscore : exercisable_type.underscore
+  end
+
   private
 
   def destroy_exercisable
