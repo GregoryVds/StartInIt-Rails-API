@@ -3,9 +3,10 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations', passwords: 'users/passwords', confirmations: 'users/confirmations' }
 
-  namespace :api do
-    scope :v1 do
+  namespace :api, defaults: {format: 'json'} do
+    namespace :v1 do
       mount_devise_token_auth_for 'User', at: 'auth', skip: [:omniauth_callbacks]
+      resources :tracks, only: [:index]
     end
   end
 

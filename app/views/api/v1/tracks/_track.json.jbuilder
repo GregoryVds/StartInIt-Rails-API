@@ -1,0 +1,1 @@
+json.(track, :id, :description, :difficulty, :name, :pre_requisites)

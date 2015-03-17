@@ -43,6 +43,7 @@ gem 'rack', '1.5.2' # Somehow Passenger at OpenShift depends on Rack 1.5.2.
 gem 'activeadmin', github: 'activeadmin'
 gem 'devise_token_auth', '~> 0.1.30'
 gem 'omniauth', '~> 1.2.2'
+gem 'will_paginate', '~> 3.0.7'
 
 group :test do
   gem 'rspec-rails', '~> 3.2.1'
