@@ -1,0 +1,6 @@
+panel 'Binary answers' do
+  table_for object.binary_answers do
+    column :value
+    column :description
+  end
+end

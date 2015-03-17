@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150316145252) do
+ActiveRecord::Schema.define(version: 20150317115929) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -55,20 +55,28 @@ ActiveRecord::Schema.define(version: 20150316145252) do
     t.datetime "updated_at"
   end
 
+  create_table "binary_answers", force: true do |t|
+    t.string   "exercisable_type"
+    t.integer  "exercisable_id"
+    t.boolean  "value"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "exercises", force: true do |t|
+    t.text     "description"
     t.integer  "difficulty",       default: 1
     t.integer  "duration"
     t.string   "title"
     t.integer  "track_id"
-    t.integer  "exercise_type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.string   "exercisable_type"
     t.integer  "exercisable_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "radio_buttons", force: true do |t|
-    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

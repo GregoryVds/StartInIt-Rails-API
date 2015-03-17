@@ -1,0 +1,11 @@
+panel 'Base exercise information' do
+  attributes_table_for object.exercise do
+    row :track
+    row :title
+    row :difficulty
+    row :duration
+    row :description
+    row :created_at
+    row :updated_at # Todo: check that update propagates...
+  end
+end
