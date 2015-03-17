@@ -1,5 +1,5 @@
 ActiveAdmin.register Mcq do
-  menu priority: 5, label: "Mcq Exercises"
+  menu priority: 5, label: "MCQ Exercises"
   permit_params :type, exercise_attributes: [:description, :difficulty, :duration, :title, :track_id, :exercise_type, :_destroy], binary_answers_attributes: [:description, :value]
   
   index do
