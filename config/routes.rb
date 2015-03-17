@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations', passwords: 'users/passwords', confirmations: 'users/confirmations' }
+  devise_for :users, only: [:confirmation], controllers: { confirmations: 'users/confirmations' }
 
   namespace :api, defaults: {format: 'json'} do
     namespace :v1 do
@@ -15,5 +15,5 @@ Rails.application.routes.draw do
     get '/confirmation-getting-started' => 'users/confirmations#getting_started', as: :confirmation_getting_started
   end
 
-  root to: 'home#index'
+  root to: redirect('/admin')
 end
