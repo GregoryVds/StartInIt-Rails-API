@@ -1,7 +1,7 @@
 class Mcq < ActiveRecord::Base
   include Exercisable
   
-  TYPES = [CheckBoxe.name, RadioButton.name]
+  TYPES = [CheckBox.name, RadioButton.name]
 
   has_many :binary_answers, as: :exercisable, dependent: :destroy, inverse_of: :exercisable
   has_many :valid_binary_answers, -> { where value: true }, class_name: BinaryAnswer.name, as: :exercisable, inverse_of: :exercisable
