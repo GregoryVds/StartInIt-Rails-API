@@ -1,9 +1,10 @@
 class RadioButton < ActiveRecord::Base
-  has_one :exercise, as: :exercise_data
+  has_one :exercise, as: :exercisable
+  has_many :answers, dependent: :destroy
   accepts_nested_attributes_for :exercise, allow_destroy: true
 
   before_validation :set_exercise
-  after_destroy :destroy_exercise # Not very pretty but it avoids circular "dependent: :destroy issues".
+  after_destroy :destroy_exercise # Not very pretty but it avoids circular "dependent: :destroy" issues.
   
   private 
   

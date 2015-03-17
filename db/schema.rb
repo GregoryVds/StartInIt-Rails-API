@@ -56,15 +56,15 @@ ActiveRecord::Schema.define(version: 20150316145252) do
   end
 
   create_table "exercises", force: true do |t|
-    t.integer  "difficulty",         default: 1
+    t.integer  "difficulty",       default: 1
     t.integer  "duration"
     t.string   "title"
     t.integer  "track_id"
     t.integer  "exercise_type"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "exercise_data_type"
-    t.integer  "exercise_data_id"
+    t.string   "exercisable_type"
+    t.integer  "exercisable_id"
   end
 
   create_table "radio_buttons", force: true do |t|
