@@ -1,0 +1,2 @@
+class CheckBoxe < Mcq
+end

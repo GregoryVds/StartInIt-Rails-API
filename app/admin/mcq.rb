@@ -1,24 +1,23 @@
-ActiveAdmin.register RadioButton do
-  menu priority: 5, label: "Radio Button Exercises"
-  permit_params exercise_attributes: [:description, :difficulty, :duration, :title, :track_id, :exercise_type, :_destroy], binary_answers_attributes: [:description, :value]
+ActiveAdmin.register Mcq do
+  menu priority: 5, label: "Mcq Exercises"
+  permit_params :type, exercise_attributes: [:description, :difficulty, :duration, :title, :track_id, :exercise_type, :_destroy], binary_answers_attributes: [:description, :value]
   
   index do
     selectable_column
     id_column
+    column :type
     column :exercise
     actions
   end
 
   show do
-    render 'admin/exercise/show', object: radio_button
+    render 'admin/exercise/show', object: mcq
 
     attributes_table do
-      row :id
-      row :created_at
-      row :updated_at
+      row :type
     end
 
-    render 'admin/answer/index', object: radio_button
+    render 'admin/answer/index', object: mcq
 
     active_admin_comments
   end
@@ -27,7 +26,9 @@ ActiveAdmin.register RadioButton do
     f.semantic_errors
 
     inputs 'Base information' do
-      f.object.build_exercise if f.object.exercise.blank?
+      input :type, as: :select, collection: Mcq::TYPES
+
+      f.object.build_exercise if f.object.exercise.blank?    
       f.semantic_fields_for :exercise do |exercise|
         exercise.inputs do
           exercise.input :track

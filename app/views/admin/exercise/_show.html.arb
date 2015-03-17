@@ -1,5 +1,6 @@
-panel 'Base exercise information' do
+panel 'Base Details' do
   attributes_table_for object.exercise do
+    row :id
     row :track
     row :title
     row :difficulty

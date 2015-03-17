@@ -1,6 +1,4 @@
-class RadioButton < ActiveRecord::Base
-  include Exercisable
-  include Mcq
+class RadioButton < Mcq
 
   validate do
     check_has_one_valid_answer

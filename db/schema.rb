@@ -46,15 +46,6 @@ ActiveRecord::Schema.define(version: 20150317115929) do
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
-  create_table "answers", force: true do |t|
-    t.string   "exercise_data_type"
-    t.integer  "exercise_data_id"
-    t.boolean  "valid"
-    t.text     "value"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "binary_answers", force: true do |t|
     t.string   "exercisable_type"
     t.integer  "exercisable_id"
@@ -76,9 +67,10 @@ ActiveRecord::Schema.define(version: 20150317115929) do
     t.datetime "updated_at"
   end
 
-  create_table "radio_buttons", force: true do |t|
+  create_table "mcqs", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "type"
   end
 
   create_table "tracks", force: true do |t|
