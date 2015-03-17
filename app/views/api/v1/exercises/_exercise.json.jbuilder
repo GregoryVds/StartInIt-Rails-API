@@ -1,0 +1,1 @@
+json.(exercise, :id, :description, :difficulty, :duration, :title, :exercisable_type)
