@@ -1,5 +1,6 @@
 ActiveAdmin.register Exercise do
   menu priority: 4, label: "All Exercises"
+  actions :index
   permit_params :difficulty, :duration, :title, :track_id, :exercise_type
 
   index do
@@ -15,12 +16,12 @@ ActiveAdmin.register Exercise do
     column :created_at
     column :updated_at
 
-    actions do |exercise|
-      link_to "View", "/admin/#{exercise.exercisable_type}/#{exercise.id}", class: "member_link"
-      link_to "Edit", "/admin/#{exercise.exercisable_type}/#{exercise.id}/edit", class: "member_link"
-      link_to "Delete", "/admin/#{exercise.exercisable_type}/#{exercise.id}", class: "member_link", method: :delete
+    column '' do |exercise|
+      view_link   = link_to "View", "/admin/#{exercise.exercisable_type}/#{exercise.id}", class: 'member_link'
+      edit_link   = link_to "Edit", "/admin/#{exercise.exercisable_type}/#{exercise.id}/edit", class: 'member_link'
+      delete_link = link_to "Delete", "/admin/#{exercise.exercisable_type}/#{exercise.id}", method: :delete, class: 'member_link'
+      view_link + edit_link + delete_link
     end
-
   end
 
   form do |f|
