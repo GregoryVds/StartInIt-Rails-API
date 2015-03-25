@@ -12,14 +12,14 @@ ActiveAdmin.register Logic do
   end
 
   show do
-    render 'admin/exercise/show', object: logic
+    render 'admin/exercises/show', object: logic
 
     attributes_table do
       row :inputs
       row :max_gates
     end
 
-    render 'admin/logic_output/index', object: logic
+    render 'admin/logic_outputs/index', object: logic
 
     active_admin_comments
   end

@@ -11,13 +11,13 @@ ActiveAdmin.register Mcq do
   end
 
   show do
-    render 'admin/exercise/show', object: mcq
+    render 'admin/exercises/show', object: mcq
 
     attributes_table do
       row :type
     end
 
-    render 'admin/answer/index', object: mcq
+    render 'admin/answers/index', object: mcq
 
     active_admin_comments
   end
