@@ -1,32 +1,38 @@
-ActiveAdmin.register Mcq do
-  menu priority: 5, label: "MCQ Exercises"
-  permit_params :type, exercise_attributes: Exercise::ADMIN_PERMITTED_PARAMS, binary_answers_attributes: [:id, :description, :value, :_destroy]
-  
+ActiveAdmin.register Logic do
+  menu priority: 6, label: "Logic Exercises"
+  permit_params :inputs, :max_gates, exercise_attributes: Exercise::ADMIN_PERMITTED_PARAMS, logic_outputs_attributes: [:id, :value, :_destroy]
+
   index do
     selectable_column
     id_column
-    column :type
+    column :inputs
+    column :max_gates
     column :exercise
+    # column :created_at
+    # column :updated_at
     actions
   end
 
   show do
-    render 'admin/exercise/show', object: mcq
+    render 'admin/exercise/show', object: logic
 
     attributes_table do
-      row :type
+      row :inputs
+      row :max_gates
     end
 
-    render 'admin/answer/index', object: mcq
+    render 'admin/logic_output/index', object: logic
 
     active_admin_comments
   end
+
 
   form do |f|
     f.semantic_errors
 
     inputs 'Base information' do
-      input :type, as: :select, collection: Mcq::TYPES
+      input :inputs
+      input :max_gates
 
       f.object.build_exercise if f.object.exercise.blank?    
       f.semantic_fields_for :exercise do |exercise|
@@ -40,14 +46,14 @@ ActiveAdmin.register Mcq do
       end
     end
 
-    inputs 'Answers' do
-      f.has_many :binary_answers do |answers|
-        answers.input :description
-        answers.input :value
-        answers.input :_destroy, as: :boolean
+    inputs 'Outputs' do
+      f.has_many :logic_outputs do |output|
+        output.input :value
+        output.input :_destroy, as: :boolean
       end
     end
 
     f.actions 
   end
+
 end

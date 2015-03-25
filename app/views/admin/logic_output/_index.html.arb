@@ -1,0 +1,5 @@
+panel 'Outputs' do
+  table_for object.logic_outputs do
+    column :value
+  end
+end
