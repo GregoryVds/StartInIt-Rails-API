@@ -25,7 +25,7 @@ ActiveAdmin.register_page "Dashboard" do
         panel "Recent Exercises" do
           ul do
             Exercise.recent(20).map do |exo|
-              li link_to(exo.title, "/admin/#{exo.exercisable_type}/#{exo.id}") + " - " + exo.track.name + " - " + exo.exercisable_type.titleize
+              li link_to(exo.title, "/admin/#{exo.exercisable_type.underscore.pluralize}/#{exo.exercisable_id}") + " - " + exo.track.name + " - " + exo.exercisable_type.titleize
             end
           end
         end

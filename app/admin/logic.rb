@@ -8,8 +8,6 @@ ActiveAdmin.register Logic do
     column :inputs
     column :max_gates
     column :exercise
-    # column :created_at
-    # column :updated_at
     actions
   end
 
