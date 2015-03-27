@@ -17,7 +17,7 @@ ActiveAdmin.register Mcq do
       row :type
     end
 
-    render 'admin/answers/index', object: mcq
+    render 'admin/binary_answers/index', object: mcq
 
     active_admin_comments
   end

@@ -1,0 +1,8 @@
+panel 'Questions' do
+  table_for object.questions do
+    column :question
+    column "Answers" do |question|
+      question.text_answers.map(&:answer).join(', ')
+    end    
+  end
+end
