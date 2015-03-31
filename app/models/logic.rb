@@ -1,7 +1,7 @@
 class Logic < ActiveRecord::Base
   include Exercisable  
   has_many :logic_outputs, dependent: :destroy, inverse_of: :logic
-  accepts_nested_attributes_for :logic_outputs, allow_destroy: true
+  accepts_nested_attributes_for :logic_outputs, allow_destroy: true, dependent: :destroy
 
   validate do
     check_logic_outputs_count
