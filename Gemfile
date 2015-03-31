@@ -44,6 +44,7 @@ gem 'activeadmin', github: 'activeadmin'
 gem 'devise_token_auth', '~> 0.1.30'
 gem 'omniauth', '~> 1.2.2'
 gem 'will_paginate', '~> 3.0.7'
+gem 'email_validator', '~> 1.5.0'
 
 group :test do
   gem 'rspec-rails', '~> 3.2.1'
