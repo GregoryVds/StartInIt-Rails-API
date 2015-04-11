@@ -1,0 +1,1 @@
+json.(turing_test, :tape, :answer, :direction, :final_state)

@@ -1,0 +1,8 @@
+panel 'Turing tests' do
+  table_for object.turing_tests do
+    column :tape
+    column :answer
+    column :direction
+    column :final_state
+  end
+end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150327110457) do
+ActiveRecord::Schema.define(version: 20150411114433) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(version: 20150327110457) do
 
   create_table "logic_outputs", force: true do |t|
     t.integer  "logic_id"
-    t.integer  "value"
+    t.string   "value"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -111,6 +111,21 @@ ActiveRecord::Schema.define(version: 20150327110457) do
     t.integer  "difficulty",     default: 1
     t.string   "name"
     t.text     "pre_requisites"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "turing_machines", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "turing_tests", force: true do |t|
+    t.integer  "turing_machine_id"
+    t.string   "tape"
+    t.string   "answer"
+    t.integer  "direction"
+    t.integer  "final_state"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
