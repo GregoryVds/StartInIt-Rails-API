@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150411114433) do
+ActiveRecord::Schema.define(version: 20150411171543) do
+
+  create_table "achievements", force: true do |t|
+    t.integer  "achievable_id"
+    t.string   "achievable_type"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "achievements", ["achievable_id", "achievable_type"], name: "index_achievements_on_achievable_id_and_achievable_type", using: :btree
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
