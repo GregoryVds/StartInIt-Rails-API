@@ -20,13 +20,14 @@ ActiveAdmin.register FillTheBlank do
 
     inputs 'Base information' do
 
-      f.object.build_exercise if f.object.exercise.blank?    
+      f.object.build_exercise if f.object.exercise.blank?
       f.semantic_fields_for :exercise do |exercise|
         exercise.inputs do
           exercise.input :track
           exercise.input :title
           exercise.input :difficulty, as: :select, collection: (1..5)
           exercise.input :duration
+          exercise.input :short_description
           exercise.input :description
         end
       end
@@ -37,13 +38,13 @@ ActiveAdmin.register FillTheBlank do
         question.input :question
         question.has_many :text_answers do |answer|
           answer.input :answer
-          answer.input :_destroy, as: :boolean          
+          answer.input :_destroy, as: :boolean
         end
         question.input :_destroy, as: :boolean
       end
     end
 
-    f.actions 
+    f.actions
   end
 
 end

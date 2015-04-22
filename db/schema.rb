@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150411171543) do
+ActiveRecord::Schema.define(version: 20150413150647) do
 
   create_table "achievements", force: true do |t|
     t.integer  "achievable_id"
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 20150411171543) do
 
   create_table "exercises", force: true do |t|
     t.text     "description"
-    t.integer  "difficulty",       default: 1
+    t.integer  "difficulty",        default: 1
     t.integer  "duration"
     t.string   "title"
     t.integer  "track_id"
@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 20150411171543) do
     t.integer  "exercisable_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "short_description"
   end
 
   create_table "fill_the_blanks", force: true do |t|

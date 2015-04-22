@@ -32,16 +32,20 @@ ActiveAdmin.register Logic do
       input :inputs
       input :max_gates
 
-      f.object.build_exercise if f.object.exercise.blank?    
-      f.semantic_fields_for :exercise do |exercise|
-        exercise.inputs do
-          exercise.input :track
-          exercise.input :title
-          exercise.input :difficulty, as: :select, collection: (1..5)
-          exercise.input :duration
-          exercise.input :description
-        end
-      end
+      f.object.build_exercise if f.object.exercise.blank?
+
+      render 'admin/exercises/form', exercise: f.object
+      #
+      # f.semantic_fields_for :exercise do |exercise|
+      #   exercise.inputs do
+      #     exercise.input :track
+      #     exercise.input :title
+      #     exercise.input :difficulty, as: :select, collection: (1..5)
+      #     exercise.input :duration
+      #     exercise.input :short_description
+      #     exercise.input :description
+      #   end
+      # end
     end
 
     inputs 'Outputs' do
@@ -51,7 +55,7 @@ ActiveAdmin.register Logic do
       end
     end
 
-    f.actions 
+    f.actions
   end
 
 end

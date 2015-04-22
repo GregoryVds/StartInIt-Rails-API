@@ -4,6 +4,7 @@ f.semantic_fields_for :exercise do |exercise|
     exercise.input :title
     exercise.input :difficulty, as: :select, collection: (1..5)
     exercise.input :duration
+    exercise.input :short_description
     exercise.input :description
   end
 end

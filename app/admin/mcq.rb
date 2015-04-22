@@ -1,7 +1,7 @@
 ActiveAdmin.register Mcq do
   menu priority: 5, label: "MCQ Exercises"
   permit_params :type, exercise_attributes: Exercise::ADMIN_PERMITTED_PARAMS, binary_answers_attributes: [:id, :description, :value, :_destroy]
-  
+
   index do
     selectable_column
     id_column
@@ -28,13 +28,14 @@ ActiveAdmin.register Mcq do
     inputs 'Base information' do
       input :type, as: :select, collection: Mcq::TYPES
 
-      f.object.build_exercise if f.object.exercise.blank?    
+      f.object.build_exercise if f.object.exercise.blank?
       f.semantic_fields_for :exercise do |exercise|
         exercise.inputs do
           exercise.input :track
           exercise.input :title
           exercise.input :difficulty, as: :select, collection: (1..5)
           exercise.input :duration
+          exercise.input :short_description
           exercise.input :description
         end
       end
@@ -48,6 +49,6 @@ ActiveAdmin.register Mcq do
       end
     end
 
-    f.actions 
+    f.actions
   end
 end

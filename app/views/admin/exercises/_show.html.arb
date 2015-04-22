@@ -5,6 +5,7 @@ panel 'Base Details' do
     row :title
     row :difficulty
     row :duration
+    row :short_description
     row :description
     row :created_at
     row :updated_at # Todo: check that update propagates...
