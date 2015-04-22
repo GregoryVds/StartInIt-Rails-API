@@ -8,7 +8,7 @@ class Exercise < ActiveRecord::Base
 
   after_destroy :destroy_exercisable # Not very pretty but it avoids circular "dependent: :destroy" issues.
 
-  ADMIN_PERMITTED_PARAMS = [:id, :description, :difficulty, :duration, :title, :track_id, :exercise_type]
+  ADMIN_PERMITTED_PARAMS = [:id, :short_description, :description, :difficulty, :duration, :title, :track_id, :exercise_type]
 
   def type
     exercisable_type == Mcq.name ? exercisable.class.name.underscore : exercisable_type.underscore

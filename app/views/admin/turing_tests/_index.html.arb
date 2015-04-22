@@ -4,5 +4,8 @@ panel 'Turing tests' do
     column :answer
     column :direction
     column :final_state
+    column :symbols
+    column :max_states
+    column :max_steps
   end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150413150647) do
+ActiveRecord::Schema.define(version: 20150422082133) do
 
   create_table "achievements", force: true do |t|
     t.integer  "achievable_id"
@@ -139,6 +139,9 @@ ActiveRecord::Schema.define(version: 20150413150647) do
     t.integer  "final_state"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "symbols"
+    t.integer  "max_states"
+    t.integer  "max_steps"
   end
 
   create_table "users", force: true do |t|

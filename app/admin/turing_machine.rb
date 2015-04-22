@@ -1,6 +1,6 @@
 ActiveAdmin.register TuringMachine do
   menu priority: 8, label: "TuringMachine Exercises"
-  permit_params exercise_attributes: Exercise::ADMIN_PERMITTED_PARAMS, turing_tests_attributes: [:id, :tape, :answer, :direction, :final_state, :_destroy]
+  permit_params exercise_attributes: Exercise::ADMIN_PERMITTED_PARAMS, turing_tests_attributes: [:id, :tape, :answer, :direction, :final_state, :symbols, :max_states, :max_steps, :_destroy]
 
   index do
     selectable_column
@@ -40,6 +40,9 @@ ActiveAdmin.register TuringMachine do
         test.input :answer
         test.input :direction
         test.input :final_state
+        test.input :symbols
+        test.input :max_states
+        test.input :max_steps
         test.input :_destroy, as: :boolean
       end
     end
