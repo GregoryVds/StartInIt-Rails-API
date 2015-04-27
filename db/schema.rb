@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150422082133) do
+ActiveRecord::Schema.define(version: 20150427085843) do
 
   create_table "achievements", force: true do |t|
     t.integer  "achievable_id"
@@ -79,6 +79,15 @@ ActiveRecord::Schema.define(version: 20150422082133) do
   end
 
   create_table "fill_the_blanks", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "help_links", force: true do |t|
+    t.string   "exercisable_type"
+    t.integer  "exercisable_id"
+    t.string   "url"
+    t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

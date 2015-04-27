@@ -4,7 +4,9 @@ class Question < ActiveRecord::Base
   accepts_nested_attributes_for :text_answers, allow_destroy: true
   validates_presence_of :question
 
-  validate do 
+  ADMIN_PERMITTED_PARAMS = [questions_attributes: [:id, :question, :_destroy, text_answers_attributes: [:id, :answer, :_destroy]]]
+
+  validate do
     check_text_answers_count
   end
 

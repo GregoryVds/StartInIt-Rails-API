@@ -1,6 +1,6 @@
 ActiveAdmin.register Mcq do
   menu priority: 5, label: "MCQ Exercises"
-  permit_params :type, exercise_attributes: Exercise::ADMIN_PERMITTED_PARAMS, binary_answers_attributes: [:id, :description, :value, :_destroy]
+  permit_params :type, Exercise::ADMIN_PERMITTED_PARAMS, BinaryAnswer::ADMIN_PERMITTED_PARAMS, HelpLink::ADMIN_PERMITTED_PARAMS
 
   index do
     selectable_column
@@ -17,6 +17,7 @@ ActiveAdmin.register Mcq do
       row :type
     end
 
+    render 'admin/help_links/index', object: mcq
     render 'admin/binary_answers/index', object: mcq
 
     active_admin_comments
@@ -38,6 +39,14 @@ ActiveAdmin.register Mcq do
           exercise.input :short_description
           exercise.input :description
         end
+      end
+    end
+
+    inputs 'Help links' do
+      f.has_many :help_links do |help|
+        help.input :description
+        help.input :url
+        help.input :_destroy, as: :boolean
       end
     end
 

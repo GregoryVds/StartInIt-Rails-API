@@ -1,4 +1,15 @@
-f.semantic_fields_for :exercise do |exercise|
+# f.semantic_fields_for :exercise do |exercise|
+#   exercise.inputs do
+#     exercise.input :track
+#     exercise.input :title
+#     exercise.input :difficulty, as: :select, collection: (1..5)
+#     exercise.input :duration
+#     exercise.input :short_description
+#     exercise.input :description
+#   end
+# end
+
+active_admin_form_for resource do |exercise|
   exercise.inputs do
     exercise.input :track
     exercise.input :title

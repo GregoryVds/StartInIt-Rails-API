@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base  
+class User < ActiveRecord::Base
 
   include DeviseTokenAuth::Concerns::User
   # Include default devise modules. Others available are:
@@ -10,8 +10,8 @@ class User < ActiveRecord::Base
 
   before_validation :set_provider
 
-  protected 
-  
+  protected
+
   def set_provider
     self.provider = 'email'
   end

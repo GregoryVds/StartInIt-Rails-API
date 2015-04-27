@@ -1,6 +1,6 @@
 ActiveAdmin.register Logic do
   menu priority: 6, label: "Logic Exercises"
-  permit_params :inputs, :max_gates, exercise_attributes: Exercise::ADMIN_PERMITTED_PARAMS, logic_outputs_attributes: [:id, :value, :_destroy]
+  permit_params :inputs, :max_gates, Exercise::ADMIN_PERMITTED_PARAMS, LogicOutput::ADMIN_PERMITTED_PARAMS, HelpLink::ADMIN_PERMITTED_PARAMS
 
   index do
     selectable_column
@@ -19,8 +19,8 @@ ActiveAdmin.register Logic do
       row :max_gates
     end
 
+    render 'admin/help_links/index', object: logic
     render 'admin/logic_outputs/index', object: logic
-
     active_admin_comments
   end
 
@@ -33,20 +33,26 @@ ActiveAdmin.register Logic do
       input :max_gates
 
       f.object.build_exercise if f.object.exercise.blank?
-
-      render 'admin/exercises/form', exercise: f.object
-      #
-      # f.semantic_fields_for :exercise do |exercise|
-      #   exercise.inputs do
-      #     exercise.input :track
-      #     exercise.input :title
-      #     exercise.input :difficulty, as: :select, collection: (1..5)
-      #     exercise.input :duration
-      #     exercise.input :short_description
-      #     exercise.input :description
-      #   end
-      # end
+      f.semantic_fields_for :exercise do |exercise|
+        exercise.inputs do
+          exercise.input :track
+          exercise.input :title
+          exercise.input :difficulty, as: :select, collection: (1..5)
+          exercise.input :duration
+          exercise.input :short_description
+          exercise.input :description
+        end
+      end
     end
+
+    inputs 'Help links' do
+      f.has_many :help_links do |help|
+        help.input :description
+        help.input :url
+        help.input :_destroy, as: :boolean
+      end
+    end
+
 
     inputs 'Outputs' do
       f.has_many :logic_outputs do |output|

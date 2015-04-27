@@ -3,7 +3,8 @@ module Exercisable
 
   included do
     has_one :exercise, as: :exercisable
-    accepts_nested_attributes_for :exercise
+    has_many :help_links, as: :exercisable, dependent: :destroy
+    accepts_nested_attributes_for :exercise, :help_links
     validates_presence_of :exercise
     after_destroy :destroy_exercise # Not very pretty but it avoids circular "dependent: :destroy" issues.
   end

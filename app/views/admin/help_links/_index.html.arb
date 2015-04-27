@@ -1,0 +1,6 @@
+panel 'Help links' do
+  table_for object.help_links do
+    column :description
+    column :url
+  end
+end

@@ -1,6 +1,6 @@
 ActiveAdmin.register FillTheBlank do
   menu priority: 7, label: "FillTheBlank Exercises"
-  permit_params :inputs, exercise_attributes: Exercise::ADMIN_PERMITTED_PARAMS, questions_attributes: [:id, :question, :_destroy, text_answers_attributes: [:id, :answer, :_destroy]]
+  permit_params :inputs, Exercise::ADMIN_PERMITTED_PARAMS, Question::ADMIN_PERMITTED_PARAMS, HelpLink::ADMIN_PERMITTED_PARAMS
 
   index do
     selectable_column
@@ -11,6 +11,7 @@ ActiveAdmin.register FillTheBlank do
 
   show do
     render 'admin/exercises/show', object: fill_the_blank
+    render 'admin/help_links/index', object: fill_the_blank
     render 'admin/questions/index', object: fill_the_blank
     active_admin_comments
   end
@@ -19,7 +20,6 @@ ActiveAdmin.register FillTheBlank do
     f.semantic_errors
 
     inputs 'Base information' do
-
       f.object.build_exercise if f.object.exercise.blank?
       f.semantic_fields_for :exercise do |exercise|
         exercise.inputs do
@@ -30,6 +30,14 @@ ActiveAdmin.register FillTheBlank do
           exercise.input :short_description
           exercise.input :description
         end
+      end
+    end
+
+    inputs 'Help links' do
+      f.has_many :help_links do |help|
+        help.input :description
+        help.input :url
+        help.input :_destroy, as: :boolean
       end
     end
 
