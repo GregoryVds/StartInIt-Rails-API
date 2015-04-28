@@ -4,7 +4,7 @@ class Exercise < ActiveRecord::Base
   has_many :achievements, as: :achievable, dependent: :destroy, inverse_of: :achievable
   has_many :help_links, inverse_of: :exercise, dependent: :destroy
 
-  validates_presence_of :description, :difficulty, :duration, :title, :track
+  validates_presence_of :description, :short_description, :difficulty, :duration, :title, :track
   validates :difficulty, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 5 }
 
   after_destroy :destroy_exercisable # Not very pretty but it avoids circular "dependent: :destroy" issues.
